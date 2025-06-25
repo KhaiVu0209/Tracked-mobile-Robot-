@@ -1,0 +1,65 @@
+BƯỚC 1 : TẠO ROS2 WORKSPACE
+  mkdir ros2_ws/src
+  cd ros2_ws
+  colcon build
+
+    Mục tiêu:
+    Tạo thư mục làm nơi chứa các package.
+    Build lần đầu để ROS biết đây là workspace hợp lệ.
+
+BƯỚC 2: NẠP MÔI TRƯỜNG SAU KHI BUILD
+
+    source install/setup.bash
+    
+    Mục tiêu:
+    Cho ROS biết workspace  đã sẵn sàng (phải làm mỗi lần mở terminal mới).
+    Hoặc thêm dòng này "source ~/ros2_ws/install/setup.bash" vào trong " gedit source ~/.bashrc"  
+
+BƯỚC 3 TẠO 1 PKG MỚI 
+
+  cd ros2_ws/src
+  ros2 pkg create name --build-type ament_python --dependencies rclpy std_msgs
+
+  Mục tiêu:
+    Tạo package Python sử dụng rclpy (thư viện ROS 2 Python).
+    Khai báo phụ thuộc: rclpy, std_msgs.
+
+BƯỚC 4 VIẾT 1 NODE ĐƠN GIẢN 
+  Tạo file:
+      cd ros2_ws/src/my_first_pkg/my_first_pkg
+      touch my_node.py
+      chmod +x my_node.py
+
+  Nội dung :
+                  import rclpy
+                  from rclpy.node import Node
+                  
+                  class MyNode(Node):
+                      def __init__(self):
+                          super().__init__('my_node')
+                          self.get_logger().info('Node has been started!')
+                  
+                  def main(args=None):
+                      rclpy.init(args=args)
+                      node = MyNode()
+                      rclpy.spin(node)
+                      rclpy.shutdown()
+                  
+                  if __name__ == '__main__':
+                      main()
+
+BƯỚC 5 KHAI BÁO NODE TRONG setup.py
+
+      entry_points={
+        'console_scripts': [
+            'my_node = my_first_pkg.my_node:main',
+        ],
+    },
+
+BƯỚC 6 BUILD LẠI WS
+  cd ~/ros2_ws
+  colcon build --symlink-install
+  source ~/.bashrc
+
+BƯỚC 7 CHẠY NODE VỪA TẠO 
+ros2 run my_first_pkg my_node
