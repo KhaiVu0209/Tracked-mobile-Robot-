@@ -24,3 +24,7 @@ BUOC 5: Thêm hiển thị dữ liệu Laser
         Queue Size: 10
 
 BUOC 6: 
+odom	Tọa độ gốc robot	Tính vị trí, chuyển động	/odom
+scan	Dữ liệu LiDAR	Quét môi trường, tránh vật	/scan
+tf	Mối liên kết các hệ trục	Hiển thị robot đúng, định vị cảm biến	TF Tree
+RobotModel	Mô hình 3D URDF	Hiển thị robot trong RViz	RViz
