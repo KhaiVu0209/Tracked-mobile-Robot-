@@ -10,3 +10,17 @@ BƯỚC 2: Chạy mô phỏng robot trong Gazebo (nếu đang dùng mô phỏng)
 BƯỚC 3: Mở terminal mới để điều khiển robot
   Chạy:
         ros2 run turtlebot3_teleop teleop_keyboard
+
+BUOC 4: Mở terminal mới và chạy:
+  rviz2
+
+BUOC 5: Thêm hiển thị dữ liệu Laser
+    Nhấn nút "Add" (góc dưới bên trái)
+    Chọn loại: LaserScan
+  Sau đó:
+    Ở mục mới “LaserScan” bên trái, bạn chỉnh:
+        Topic: /scan
+        Size: có thể để mặc định (0.03)
+        Queue Size: 10
+
+BUOC 6: 
