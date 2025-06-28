@@ -1,0 +1,12 @@
+BƯỚC 1: Đảm bảo đã khai báo biến môi trường
+  Mở mỗi terminal mới, chạy:
+      export TURTLEBOT3_MODEL=burger
+(Nếu đã thêm vào ~/.bashrc, thì dòng này tự chạy mỗi lần mở terminal mới)
+
+BƯỚC 2: Chạy mô phỏng robot trong Gazebo (nếu đang dùng mô phỏng)
+  Chạy trong 1 terminal khác:
+      ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+
+BƯỚC 3: Mở terminal mới để điều khiển robot
+  Chạy:
+        ros2 run turtlebot3_teleop teleop_keyboard
