@@ -1,0 +1,48 @@
+🔹 1. State Estimation – Ước lượng trạng thái
+Dự đoán trạng thái hiện tại (vị trí, vận tốc, góc quay...) của robot dựa trên cảm biến.
+📌 Dữ liệu dùng:
+IMU, encoder, GPS, camera
+Sử dụng Kalman Filter, Extended Kalman Filter (EKF)
+🧠 Ví dụ:
+Robot không biết chính xác vị trí nó đang ở đâu, nó dùng các dữ liệu cảm biến để ước lượng được: "Tôi đang ở x = 2.3m, y = 1.5m, θ = 0.8 rad".
+
+🔹 2. Localization – Xác định vị trí
+Tìm ra robot đang ở đâu trong bản đồ (có sẵn).
+📌 Dữ liệu dùng:
+/scan từ LiDAR
+/map (bản đồ tĩnh)
+Thuật toán: AMCL (Adaptive Monte Carlo Localization)
+🧠 Ví dụ:
+Robot đi trong nhà → nó dùng laser để xác định: "Tôi đang ở góc phòng, gần bàn".
+
+🔹 3. Mapping – Vẽ bản đồ
+Dùng cảm biến (thường là LiDAR hoặc camera) để vẽ lại môi trường xung quanh.
+📌 Dữ liệu:
+/scan, hoặc ảnh từ camera
+Robot đi quanh → vẽ tường, chướng ngại vật
+🧠 Ví dụ:
+Bạn cho robot đi khắp nhà → nó vẽ bản đồ map.yaml để lưu lại môi trường.
+
+🔹 4. SLAM – Simultaneous Localization and Mapping
+Vừa vẽ bản đồ (Mapping), vừa xác định vị trí bản thân (Localization) trong môi trường chưa biết trước.
+📌 Là sự kết hợp giữa:
+Mapping + Localization
+Dùng trong môi trường chưa có bản đồ
+🧠 Ví dụ:
+Robot đi vào tòa nhà mới → nó không biết gì → vừa đi vừa vẽ bản đồ, vừa biết mình đang ở đâu.
+
+🔹 5. Navigation – Điều hướng
+Làm robot tự di chuyển từ A → B, tránh vật cản và đi đường ngắn nhất.
+📌 Tành phần:
+Localization (biết mình ở đâu)
+Motion planning (vẽ đường)
+Control (lái theo đường)
+🧠 Ví dụ:
+Gửi goal tới Nav2 → robot tự tìm đường đi đến mà tránh bàn, ghế, tường.
+
+🔹 6. Motion Planning – Lập kế hoạch chuyển động
+Tính toán quỹ đạo (path) robot cần đi để tới đích, tránh chướng ngại vật.
+📌 Dùng thuật toán:
+A*, Dijkstra, RRT, DWA, TEB...
+🧠 Ví dụ:
+Giữa điểm A và B có cái ghế → robot vẽ ra đường vòng tránh ghế.
