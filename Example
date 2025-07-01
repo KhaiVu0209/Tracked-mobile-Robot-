@@ -1,7 +1,7 @@
 BƯỚC 1: Đảm bảo đã khai báo biến môi trường
   Mở mỗi terminal mới, chạy:
       export TURTLEBOT3_MODEL=burger
-(Nếu đã thêm vào ~/.bashrc, thì dòng này tự chạy mỗi lần mở terminal mới)
+(Nếu đã thêm vào gedit ~/.bashrc, thì dòng này tự chạy mỗi lần mở terminal mới)
 
 BƯỚC 2: Chạy mô phỏng robot trong Gazebo (nếu đang dùng mô phỏng)
   Chạy trong 1 terminal khác:
